@@ -1,1 +1,23 @@
+import java.util.ArrayList;
 
+public class Player
+{
+    private int tokenCount;
+    private String name;
+    //private ArrayList<Card> hand;
+    
+
+    public Player()
+    {
+        tokenCount = 2;
+        //hand = new ArrayList<Card>();
+    }
+
+    public Player (String n)
+    {
+        tokenCount = 2;
+        name = n;
+        //hand = new ArrayList<Card>();
+        
+    }
+}
