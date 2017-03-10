@@ -1,1 +1,68 @@
+/**
+ * Write a description of class Action here.
+ * 
+ * @author (David Florence) 
+ * @version (.0.2.56)
+ */
+public class Action
+{
+    public Action()
+    {
+        // initialise instance variables
+        x = 0;
+    }
+   public static void Income()
+   {
+       //takes a coin
+       /*playerTokenCount +1
+        */
+    }
+   public static void foreignAid()
+   {
+       //takes 2 coins
+       /*playerTokenCount +2
+        * 
+        */
+    }
+   public static void coup()
+   {
+       //kills a player's card 
+       //uses 7 coins
+       /*playerTokenCount -7
+        * player
+        */
+       
+       //currentPlayer.setCoins(currentPlayer.getCoins()-7)
+    }
+   public int Tax()
+    {
+     //take 3 coins
+       /* playerTokenCount 
+        * 
+        */
+    }
+   public Assassinate()
+   {
+       //killa a card by paying 3 coins
+       /*
+        * 
+        */ 
+    }
+   public void Exchange()
+   {
+       //exchange cards with court deck or another player
+       /* 
+        * 
+        */
+    }
+    public Steal()
+    {
+        //take 2 coins from another player
+        /*
+         *  currentPlayer.setCoins(Current
+        
+        
+    } 
+}
+
 
