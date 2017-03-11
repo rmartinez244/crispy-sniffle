@@ -17,4 +17,14 @@ public class Player
         name = n;
         //hand = new ArrayList<Card>();
     }
+    
+    public int getTokens()
+    {
+        return tokenCount;
+    }
+    
+    public void addTokens(int t)
+    {
+        tokenCount += t;
+    }
 }
