@@ -28,7 +28,7 @@ public class Player
         tokenCount += t;
     }
     
-    public int getCards(int k)
+    public int getCards()
     {
         return cardCount;
     }
