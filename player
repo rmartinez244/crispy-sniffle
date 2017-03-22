@@ -3,7 +3,7 @@ public class Player
 {
     private int tokenCount;
     private String name;
-    public ArrayList<Card> hand;
+    private ArrayList<Card> hand;
     
     public Player()
     {
@@ -27,4 +27,10 @@ public class Player
     {
         tokenCount += t;
     }
+    
+    public int getCards(int k)
+    {
+        return cardCount;
+    }
+    
 }
