@@ -1,1 +1,21 @@
-
+public class Card
+{
+    private String name;
+    
+    public Card()
+    {
+        name = "b...l...a...n...k";
+    }
+    public Card(String n)
+    {
+        name = n;
+    }
+    
+    /**
+     * This should get the Name of the Card
+     */
+    public String getName()
+    {
+        return name;
+    }
+}
