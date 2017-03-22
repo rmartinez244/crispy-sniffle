@@ -59,7 +59,9 @@ public class cardDeck
         }
     }
     /**
-     * This method should replace the player's card with a new one. Then place the old one in the discard pile.
+     * This method should replace the player's card with a new one. Then place the old one into the pile. 
+     * 
+     * i.e Challenge, Exchange
      * 
      * First, removes the player's card from the player's hand ArrayList and adds it into the Character ArrayList
      * Second, shuffles the Character ArrayList
@@ -70,5 +72,16 @@ public class cardDeck
         Characters.add(play.hand.remove(i));
         shuffle();
         play.hand.add(Characters.remove(0));
+    }
+    /**
+     * This method takes away a player's card from their hand.
+     * 
+     * i.e Coup, Assassate
+     * 
+     * Removes the player's card from Hand ArrayList and adds it into the Discard ArrayList
+     */
+    public void Discard(int i, Player play)
+    {
+        Discard.add(play.hand.remove(i));
     }
 }
