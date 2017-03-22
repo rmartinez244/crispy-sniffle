@@ -2,25 +2,26 @@
  * Write a description of class Action here.
  * 
  * @author (David Florence) 
- * @version (.0.2.56)
+ * @version (.0.7.89)
  */
-public class Action
+import java.util.Scanner; 
+public class Action extends Person
 {
     public Action()
     {
         // initialise instance variables
         x = 0;
     }
-   public static void Income()
+   public int Income()
    {
        //takes a coin
-       /*playerTokenCount +1
+       /*currentPlayer.setTokens(CurrentTokens + 1)
         */
     }
    public static void foreignAid()
    {
        //takes 2 coins
-       /*playerTokenCount +2
+       /*currentPlayer.setToken(CurrentTokens +2)
         * 
         */
     }
@@ -28,8 +29,11 @@ public class Action
    {
        //kills a player's card 
        //uses 7 coins
-       /*playerTokenCount -7
-        * player
+       /* if currentPlayer.CurrentTokens >= 7
+        * 
+        * currentPlayer.setToken(CurrentTokens -7)
+        * else 
+        * System.out.println("Unavailable action");
         */
        
        //currentPlayer.setCoins(currentPlayer.getCoins()-7)
@@ -41,7 +45,7 @@ public class Action
         * 
         */
     }
-   public Assassinate()
+   public void Assassinate()
    {
        //killa a card by paying 3 coins
        /*
@@ -55,14 +59,13 @@ public class Action
         * 
         */
     }
-    public Steal()
+    public int Steal()
     {
         //take 2 coins from another player
         /*
-         *  currentPlayer.setCoins(Current
-        
+         *  currentPlayer.setTokens(CurrentTokens + 2)
+         */
         
     } 
 }
-
 
