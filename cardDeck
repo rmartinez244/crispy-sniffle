@@ -1,1 +1,74 @@
+import java.util.*;
+public class cardDeck
+{      
+    // Alive Cards i.e Exchange, Challenge
+    ArrayList<Card> Characters = new ArrayList<Card>();
 
+    // Dead Cards i.e Coup, Assassate
+    ArrayList<Card> Discard = new ArrayList<Card>();
+
+    /**
+     * This should create the new card into the Characters ArrayList
+     */
+    public cardDeck()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            Characters.add(new Card("Duke"));
+            Characters.add(new Card("Assassin"));
+            Characters.add(new Card("Ambassador"));
+            Characters.add(new Card("Captain"));
+            Characters.add(new Card("Contessa"));
+        }
+    }
+    /**
+     * It's the beginning of the game, shuffle the cards (Characters ArrayList). The method should give the cards to the player before the game start. 
+     * 
+     * First, shuffles the Characters ArrayList
+     * Second, removes the top card from the Character ArrayList and adds it to the player Hand ArrayList
+     */
+    public void handOut(Player play)
+    {
+        shuffle();
+        play.hand.add(Characters.remove(0));
+        play.hand.add(Characters.remove(0));
+    }
+    /**
+     * The method should end with the "Cards" in a random order.
+     * 
+     * The first loop is going to make an int for random numbers. Pulls a card from the Characters ArrayList and places it in a random place inside the A ArrayList.
+     * The second loop is going to be replacing the cards with the order that its in from A ArrayList
+     */
+    public void shuffle()
+    {
+        ArrayList<Card> A = new ArrayList<Card>();
+        for(int i = 0; i < Characters.size(); i++)
+        {
+            // Makes an int for random number
+            int rand;
+            rand = (int)(Math.random() * Characters.size());
+            // Pulls a card in the ArrayList in a random place
+            A.add(rand, Characters.get(i));
+        }
+        for(int i = 0; i < Characters.size(); i++)
+        {
+            // Remove the card from the Character ArrayList
+            Characters.remove(i);
+            // Puts a new card
+            Characters.add(i, A.get(i));
+        }
+    }
+    /**
+     * This method should replace the player's card with a new one. Then place the old one in the discard pile.
+     * 
+     * First, removes the player's card from the player's hand ArrayList and adds it into the Character ArrayList
+     * Second, shuffles the Character ArrayList
+     * Third, removes a card from the Character ArrayList and adds it into the Player's hand
+     */
+    public void exchange(int i, Player play)
+    {
+        Characters.add(play.hand.remove(i));
+        shuffle();
+        play.hand.add(Characters.remove(0));
+    }
+}
