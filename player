@@ -1,3 +1,11 @@
+/**
+ * Write a description of class Player here.
+ * 
+ * Class Player is programmed to get Player to do its necessary actions in order for the game to play properly.
+ * 
+ * @author (Idaly Morales)
+ * @version (03.31.2017)
+ */
 import java.util.ArrayList;
 public class Player
 {
@@ -5,33 +13,58 @@ public class Player
     private int cardCount;
     private String name;
     ArrayList<Card> hand;
-    
+
+    /*
+     * A constructor with no parameters
+     */
     public Player()
     {
         tokenCount = 2;
         hand = new ArrayList<Card>();
     }
-    
+
+    /*
+     * Named player will start the game with 2 tokens in hand
+     */
     public Player (String n)
     {
         tokenCount = 2;
         name = n;
         hand = new ArrayList<Card>();
     }
+
+    /*
+     * Recieves the information of the player's name
+     */
+    public String getName()
+    {
+        return name;
+    }
     
+    /*
+     * Obtains the number of tokens that player has in hand
+     */
     public int getTokens()
     {
         return tokenCount;
     }
-    
+
+    /*
+     * Adds a given number of token to hand
+     * 
+     * @return the number of tokens after they are added to the player's hand
+     */
     public void addTokens(int t)
     {
         tokenCount += t;
     }
-    
+
+    /*
+     * Aquires the number of cards the player contains
+     */
     public int getCards()
     {
         return cardCount;
     }
-    
+
 }
