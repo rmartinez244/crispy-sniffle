@@ -8,17 +8,32 @@ public class cardDeck
     ArrayList<Card> Discard = new ArrayList<Card>();
 
     /**
-     * This should create the new card into the Characters ArrayList
+     * This should create the new card into the Characters ArrayList. Then dependent on the gameMode. Put cards for Ambassor or Inquisit
      */
+
     public cardDeck()
     {
         for(int i = 0; i < 3; i++)
         {
             Characters.add(new Card("Duke"));
             Characters.add(new Card("Assassin"));
-            Characters.add(new Card("Ambassador"));
             Characters.add(new Card("Captain"));
             Characters.add(new Card("Contessa"));
+        }
+        
+        if(gameMode == a || gameMode == A)
+        {
+            for(int j = 0; j < 3; i++)
+            {
+                Characters.add(new Card("Ambassador"));
+            }
+        }
+        if(gameMode == i || gameMode == I)
+        {
+            for(int j = 0; j < 3; i++)
+            {
+                Characters.add(new Card("Inquisitor"));
+            }
         }
     }
     /**
