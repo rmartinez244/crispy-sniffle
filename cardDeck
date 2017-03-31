@@ -21,16 +21,16 @@ public class cardDeck
             Characters.add(new Card("Contessa"));
         }
         
-        if(gameMode == a || gameMode == A)
+        if(main.getMode().equals('a') || main.getMode().equals('a'))
         {
-            for(int j = 0; j < 3; i++)
+            for(int j = 0; j < 3; j++)
             {
                 Characters.add(new Card("Ambassador"));
             }
         }
-        if(gameMode == i || gameMode == I)
+        if(main.getMode().equals('i') || main.getMode().equals('I'))
         {
-            for(int j = 0; j < 3; i++)
+            for(int j = 0; j < 3; j++)
             {
                 Characters.add(new Card("Inquisitor"));
             }
