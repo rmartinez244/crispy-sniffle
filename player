@@ -11,6 +11,7 @@ public class Player
 {
     private int tokenCount;
     private int cardCount;
+    private int cardDeck;
     private String name;
     ArrayList<Card> hand;
 
@@ -67,4 +68,9 @@ public class Player
         return cardCount;
     }
 
+    public ArrayList getCardDeck()
+    {
+        return hand;
+    }
+    
 }
