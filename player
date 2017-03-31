@@ -1,7 +1,7 @@
 /**
  * Write a description of class Player here.
  * 
- * Class Player is programmed to get Player to do its necessary actions in order for the game to play properly.
+ * Class Player is programmed to make players do their necessary actions in order for the game to play properly.
  * 
  * @author (Idaly Morales)
  * @version (03.31.2017)
@@ -11,12 +11,11 @@ public class Player
 {
     private int tokenCount;
     private int cardCount;
-    private int cardDeck;
     private String name;
     ArrayList<Card> hand;
 
     /*
-     * A constructor with no parameters
+     * Makes a constructor with no parameters
      */
     public Player()
     {
@@ -25,7 +24,7 @@ public class Player
     }
 
     /*
-     * Named player will start the game with 2 tokens in hand
+     * Allows the constructor to make the player begin the game with 2 tokens in hand
      */
     public Player (String n)
     {
@@ -35,7 +34,7 @@ public class Player
     }
 
     /*
-     * Recieves the information of the player's name
+     * Recieves the the player's name
      */
     public String getName()
     {
@@ -68,6 +67,9 @@ public class Player
         return cardCount;
     }
 
+    /*
+     * Gets the card deck to work on player
+     */
     public ArrayList getCardDeck()
     {
         return hand;
