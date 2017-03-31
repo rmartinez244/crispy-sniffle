@@ -1,126 +1,142 @@
 import java.util.Scanner;
+import java.util.*; 
 /**
  * Write a description of class main here.
  * 
  * @author (your name) 4
  * @version (a version number or a date)
  */
-public class main extends Player
+public class main
 {
-    Player[] players;
+    ArrayList<Player> players = new ArrayList<Player>();
     String action = "";
-    public  void main(String args[])
-    {
-    }
+    String gameMode = " ";
+    int bluffer;
+    int liarIndex = 0;
+    public cardDeck gameDeck = new cardDeck();
+    //public gameAction = new action();
+    //public gameCounterAction = new counterAction();
+    /**
+     * This code plays the game
+     * It will start and end the game
+     * 
+     */
     public void playGame()
     {
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Enter the amount of players");
-        players = new Player[userInput.nextInt()];
+        System.out.println("Will you be playing with [A]mbassadors or [I]nquistors?");
+        gameMode = userInput.nextLine();
         
-        for(int i = 0; i < players.length;i++)
+        //gameDeck.setMode(gameMode);
+        gameDeck.shuffle();
+        
+        Scanner cheat = new Scanner(System.in);
+        int x = 0;
+        
+        String playerName = "";
+        System.out.println("Enter the amount of players");
+        int playerCount = userInput.nextInt();
+        for(int i = 0; i < playerCount;i++)
         {
             System.out.println("Enter Player " + i + ":");
-            players[i] = new Player(userInput.nextLine());
+            playerName = userInput.nextLine();
+            x = cheat.nextInt();
+            players.add(i,new Player(playerName,x));
+            
+            gameDeck.handOut(players.get(i));
         }
-        //shuffle();
+        display();
       
         int turn = 0;                            
-        while(!winCondition())
+        while(winCondition() == false)
         {
             System.out.println("Turn " + turn);
-            for(int k = 0; k < players.length;k++)
+            for(int k = 0; k < players.size();k++)
             {
-               //display();
-               //players[k].action(players[k]);
-               //players[k].counterAction();
-               //callBluff(players[k],action);
-            }
+               display();
+               action(players.get(k));
+               
+               System.out.println("Does any player call bluff (Enter index)");
+               int 
+               liarIndex = callBluff(players.get(k));
+               if(liarIndex != -1)gameDeck.Discard(0,players.get(liarIndex));
+               
+               counter(players.get(k));
+               
+               liarIndex = callBluff(players.get(k));
+               if(liarIndex != -1)gameDeck.Discard(0,players.get(liarIndex));
+            }            
             turn++;
-            System.out.println(" ");
+            for(int i = 0; i < players.size(); i++)
+            {
+                if(players.get(i).getCards() == 0)
+                {
+                    System.out.println(players.get(i).getName() + " is eliminated");
+                    players.remove(i);
+                    if(i != 0)i = i-1;
+                }
+                System.out.println(" ");
+            }
         }
+        
+        System.out.println(players.get(0).getName() + " is the winner!");
     }
     
-    public void action(Player pTemp)
+    /**
+     * This will call a method in the action class which will handle all actions.
+     * 
+     */
+    public void action(Player pCurrent)
     {
-        int choice = 0;
-        System.out.println(getName() + ", it is your turn");
-        if(getToken() >= 10)
-        {
-            //action is coup
-            //pTemp.coup();
-        }
-        
-        System.out.println("1. Income");
-        System.out.println("2. Foreign Aid");
-        System.out.println("3. Coup");
-        
+        System.out.println("It is your turn, " + pCurrent.getName());
+        //gameAction.action(pCurrent);
+    }
+    /**
+     * This calls a method in the counterAction class which will handle all counteractions
+     */
+    public void counter(Player pCurrent)
+    {
+        System.out.println("It is your turn, " + pCurrent.getName());
+        //gameCounterAction.counterAction(pCurrent);
+    }
+    /**
+     * 
+     */
+    public int callBluff(Player pCurrent)
+    {
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Enter an action ");
-        choice = userInput.nextInt();
-        switch(choice)
-        {
-            case 1:
-                action = "income";
-                break;
-            case 2:
-                action = "foreignAid";
-                break;
-            case 3:
-                action = "coup";
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            
-        }
+        System.out.println("Which player do you accuse?");
+        int accused = userInput.nextInt();
+        Player liar = players.get(accused);
+        //liar.getDeck();
         
-    }
-    
-    public void counter()
-    {
-        int choice = 0;
-        Scanner userInput = new Scanner(System.in);
-        System.out.println("Enter an counteraction ");
-        choice = userInput.nextInt();
-        switch(choice)
-        {
-            case 1:
-                break;
-            case 2:
-                break;
-            
-        }
         
+        return -1;
     }
-    
-    public boolean callBluff(Player liar, String act)
-    {
-        
-    }
-    
+    /**
+     * This will display all information of all Players. It will use the methods within the Player class to display the informartion.
+     * 
+     */
     public String display()
     {
-        for(int k = 0; k < players.length; k++)
+        for(int k = 0; k < players.size(); k++)
         {
-            System.out.println(players[k].getName() + ": " + players[k].getToken() + " Token(s)"
-            + "       Influences :" + players[k].getCardCount()); 
+            System.out.println(players.get(k).getName() + ": " + players.get(k).getTokenCount() + " Token(s)"
+            + "       Influences :" + players.get(k).getCards()); 
         }
         
         return "";
     }
     
+    /**
+     * 
+     * This will check to see if the player array has only one player in it.
+     * If it does, it will return true. Otherwise, false.
+     */
     public boolean winCondition()
     {
-        int losers = 0;
-        for(int k = 0; k < players.length; k++)
-        {
-            if(players[k].getCardCount() == 0)losers++;
-        }
-        return (losers == players.length);
+        return (1 == players.size());
     }
     
 }
+
