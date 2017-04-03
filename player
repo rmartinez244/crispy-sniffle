@@ -1,10 +1,8 @@
 /**
- * Write a description of class Player here.
- * 
  * Class Player is programmed to make players do their necessary actions in order for the game to play properly.
  * 
- * @author (Idaly Morales)
- * @version (03.31.2017)
+ * @author Idaly Morales Sandoval
+ * @version 03.31.2017
  */
 import java.util.ArrayList;
 public class Player
@@ -14,8 +12,8 @@ public class Player
     private String name;
     ArrayList<Card> hand;
 
-    /*
-     * Makes a constructor with no parameters
+    /**
+     * Makes a player constructor with no parameters
      */
     public Player()
     {
@@ -23,8 +21,8 @@ public class Player
         hand = new ArrayList<Card>();
     }
 
-    /*
-     * Allows the constructor to make the player begin the game with 2 tokens in hand
+    /**
+     * Allows the player constructor to make player begin the game with 2 tokens in hand
      */
     public Player (String n)
     {
@@ -33,46 +31,49 @@ public class Player
         hand = new ArrayList<Card>();
     }
 
-    /*
-     * Recieves the the player's name
+    /**
+     * @return the the player's name
      */
     public String getName()
     {
         return name;
     }
     
-    /*
+    /**
      * Obtains the number of tokens that player has in hand
+     * 
+     * @return the number of tokens counted
      */
     public int getTokens()
     {
         return tokenCount;
     }
 
-    /*
+    /**
      * Adds a given number of token to hand
      * 
-     * @return the number of tokens after they are added to the player's hand
+     * gets the number of tokens after they are added to the player's hand
      */
     public void addTokens(int t)
     {
         tokenCount += t;
     }
 
-    /*
-     * Aquires the number of cards the player contains
+    /**
+     * Obtains the number of cards the player currently has in hand
+     * 
+     * @return the number of cards counted
      */
     public int getCards()
     {
         return cardCount;
     }
 
-    /*
+    /**
      * Gets the card deck to work on player
      */
     public ArrayList getCardDeck()
     {
         return hand;
     }
-    
 }
