@@ -1,71 +1,134 @@
-/**
- * Write a description of class Action here.
- * 
- * @author (David Florence) 
- * @version (.0.7.89)
- */
+import java.util.ArrayList;
 import java.util.Scanner; 
-public class Action extends Person
+public class Action extends Player
 {
-    public Action()
+    
+    public String Options(Player pCurrent,ArrayList<Player> players)
+    
+     
+     
     {
-        // initialise instance variables
-        x = 0;
+        {
+            // initialise instance variables
+
+            System.out.println("1.Income");
+            System.out.println("2.foreignAid");
+            System.out.println("3.coup");
+            System.out.println("4.Tax");
+            System.out.println("5.Assassinate");
+            System.out.println("6.Exchange");
+            System.out.println("7.Steal");
+            System.out.print("Enter your ACTION");  
+            String actionString;
+            /*
+             * The next switch case method 
+             */
+            int choice = 0;
+            Scanner userInput = new Scanner(System.in);
+            System.out.println("Enter an action ");
+            choice = userInput.nextInt();
+            switch(choice)
+            {
+                case 1:
+                Income();
+                return "Income";
+                break;
+                case 2:
+                foreignAid();
+                return "foreignAid";
+                break;
+                case 3:
+                coup();
+                return "coup";
+                break;
+                case 4:
+                Tax();
+                return "Tax";
+                break;
+                case 5:
+                Assassinate(cardDeck);
+                return "Assassinate";
+                break;
+                case 6:
+                Exchange();
+                return "Exchange";
+                break;
+                case 7:
+                Steal();
+                return "Steal";
+                break;
+
+            }
+        }
     }
-   public int Income()
-   {
-       //takes a coin
-       /*currentPlayer.setTokens(CurrentTokens + 1)
-        */
+
+    public int Income()
+    {
+        //takes a coin
+        /* case 
+         */
+        pCurrent.addTokens(2);
     }
-   public static void foreignAid()
-   {
-       //takes 2 coins
-       /*currentPlayer.setToken(CurrentTokens +2)
-        * 
-        */
+
+    public static void foreignAid()
+    {
+        //takes 2 coins
+        pCurrent.addTokens(2);
+
     }
-   public static void coup()
-   {
-       //kills a player's card 
-       //uses 7 coins
-       /* if currentPlayer.CurrentTokens >= 7
-        * 
-        * currentPlayer.setToken(CurrentTokens -7)
-        * else 
-        * System.out.println("Unavailable action");
-        */
+
+    public static void coup()
+    {
+        //kills a player's card 
+        //uses 7 coins
+
+        if (Player.tokenCount >= 7)
+
+            pCurrent.addTokens(CurrentTokens -7);
+
+        else 
+            System.out.println("Unavailable action");
+    }
+
+    public int Tax()
+    {
+        //take 3 coins
+        currentPlayer.addTokens(7);
+
+        return 0;
+    }
+
+    public void Assassinate()
+    {
+        //killa a card by paying 3 coins
+        
+        Scanner userInput = new Scanner(System.in);
+        if (Player.TokenCount >= 3)
+        {
+            Player.subtractTokens(3);            
+            System.out.println("Which player would you like to affect?");
        
-       //currentPlayer.setCoins(currentPlayer.getCoins()-7)
+            pCurrent.setHand(ArrayList<Card>);
+        }
+        else
+            System.out.println("Unavailable action");
+
     }
-   public int Tax()
+
+    public void Exchange(cardDeck deck)
     {
-     //take 3 coins
-       /* playerTokenCount 
-        * 
-        */
+        //exchange cards with court deck or another player
+
+        deck.exchange();
+
     }
-   public void Assassinate()
-   {
-       //killa a card by paying 3 coins
-       /*
-        * 
-        */ 
-    }
-   public void Exchange()
-   {
-       //exchange cards with court deck or another player
-       /* 
-        * 
-        */
-    }
-    public int Steal()
+
+    public void Steal()
     {
         //take 2 coins from another player
-        /*
-         *  currentPlayer.setTokens(CurrentTokens + 2)
-         */
-        
+
+        currentPlayer.addTokens(2);
+
+        return;
     } 
 }
-
