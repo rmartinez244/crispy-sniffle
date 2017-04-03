@@ -1,9 +1,15 @@
+/**
+ * Write a description of class Action here.
+ * 
+ * @author (David Florence) 
+ * @version (.2.8.69)
+ */
 import java.util.ArrayList;
 import java.util.Scanner; 
 public class Action extends Player
 {
     
-    public String Options(Player pCurrent,ArrayList<Player> players)
+    public String Options(Player pCurrent,ArrayList<Player> players ,cardDeck deck, Player tokenCount)
     
      
      
@@ -30,15 +36,15 @@ public class Action extends Player
             switch(choice)
             {
                 case 1:
-                Income();
+                Income(pCurrent);
                 return "Income";
                 break;
                 case 2:
-                foreignAid();
+                foreignAid(pCurrent);
                 return "foreignAid";
                 break;
                 case 3:
-                coup();
+                coup(players , pCurrent);
                 return "coup";
                 break;
                 case 4:
@@ -46,11 +52,11 @@ public class Action extends Player
                 return "Tax";
                 break;
                 case 5:
-                Assassinate(cardDeck);
+                Assassinate(players);
                 return "Assassinate";
                 break;
                 case 6:
-                Exchange();
+                Exchange(deck);
                 return "Exchange";
                 break;
                 case 7:
@@ -62,7 +68,7 @@ public class Action extends Player
         }
     }
 
-    public int Income()
+    public int Income( Player pCurrent)
     {
         //takes a coin
         /* case 
@@ -70,23 +76,30 @@ public class Action extends Player
         pCurrent.addTokens(2);
     }
 
-    public static void foreignAid()
+    public static void foreignAid(Player pCurrent)
     {
         //takes 2 coins
         pCurrent.addTokens(2);
 
     }
 
-    public static void coup()
+    public void coup( ArrayList<Player> players , Player pCurrent)
     {
         //kills a player's card 
         //uses 7 coins
 
-        if (Player.tokenCount >= 7)
-
-            pCurrent.addTokens(CurrentTokens -7);
-
-        else 
+        Scanner userInput = new Scanner(System.in);
+        if (pCurrent.tokenCount >= 3)
+        {
+            pCurrent.subtractTokens(3);     
+            for(int i=0;i<players.size();i++)
+            {
+                System.out.println(players.get(i).getName());
+            }
+            System.out.println("Which player would you like to affect?");            
+            cardDeck.Discard();
+        }
+        else
             System.out.println("Unavailable action");
     }
 
@@ -98,17 +111,20 @@ public class Action extends Player
         return 0;
     }
 
-    public void Assassinate()
+    public void Assassinate(ArrayList<Player> players)
     {
         //killa a card by paying 3 coins
         
         Scanner userInput = new Scanner(System.in);
-        if (Player.TokenCount >= 3)
+        if (pCurrent.getTokenCount >= 3)
         {
-            Player.subtractTokens(3);            
-            System.out.println("Which player would you like to affect?");
-       
-            pCurrent.setHand(ArrayList<Card>);
+            Player.subtractTokens(3);     
+            for(int i=0;i<players.size();i++)
+            {
+                System.out.println(player.get(i).getName());
+            }
+            System.out.println("Which player would you like to affect?");            
+            cardDeck.Discard();
         }
         else
             System.out.println("Unavailable action");
