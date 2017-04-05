@@ -1,1 +1,70 @@
+/**
+ * Write a description of class CounterAction here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import java.util.Scanner;
+public class CounterAction extends Action
+/**
+ * Counter Action uses a void method to select a counter and a series of other methods to balance the game
+ */
+{
+    public void CounterAction()
+    /**
+     * Allows players to select a counterAction
+     */
+    {
+        // instance variables 
+        int choice = 0;
+        Scanner userInput = new Scanner(System.in);
+        //System.out.println("Enter the amount of players");
+       // Player players = new Player[userInput.nextInt()];
+        //if(getToken() >= 10)
+        {
+            //action is coup
+            //pTemp.coup();
+        }
+
+        System.out.println("1. Income");
+        System.out.println("2. Foreign Aid");
+        System.out.println("3. Coup");
+
+        
+        System.out.println("Enter a counter action ");
+        choice = userInput.nextInt();
+        switch(choice)
+        {
+          case 1:
+                blockForeignAid();
+                break;
+                case 2:
+               blockAssassinate();
+                break;
+                case 3:
+                blockSteal();
+                break;
+
+        }
+    }
+
+    public void blockForeignAid()
+    /**
+     * Reverses the foreignAid action
+     * Subtracts Tokens from the player
+     */
+    {
+         pCurrent.subtractTokens(2);
+    }
+   
+
+    public void blockSteal()
+    /**
+     * Reverses the Steal action
+     * Subtracts Tokens from the player
+     */
+    {
+        pCurrent.subtractTokens(2);
+    }
+}
 
